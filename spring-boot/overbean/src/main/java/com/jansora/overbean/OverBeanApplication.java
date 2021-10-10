@@ -29,7 +29,8 @@ public class OverBeanApplication implements ApplicationContextAware {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OverBeanApplication.class, args);
-		System.out.println("abc");
+		System.out.println(asianService.sayHello());
+		System.out.println(europeanService.sayHello());
 	}
 
 }
