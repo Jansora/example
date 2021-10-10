@@ -1,23 +1,13 @@
 package com.jansora.overbean.config;
 
-import com.jansora.overbean.properties.AppProperties;
-import com.jansora.overbean.service.AsianService;
-import com.jansora.overbean.service.EuropeanService;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
-import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -51,8 +41,11 @@ public class OverBeanConfig implements BeanFactoryAware, ApplicationContextAware
 //        if (ObjectUtils.isEmpty(factory) || ObjectUtils.isEmpty(appProperties) || ObjectUtils.isEmpty(appProperties.getExcludeBeanClasses())) {
 //            return;
 //        }
-        List<String> beans = Arrays.asList("com.jansora.overbean.service.impl.custom.Korean", "com.jansora.overbean.service.impl.product.Asian"
-                , "com.jansora.overbean.service.impl.product.European");
+        List<String> beans = Arrays.asList(
+                "com.jansora.overbean.service.impl.custom.Korean",
+                "com.jansora.overbean.service.impl.product.Asian",
+                "com.jansora.overbean.service.impl.product.European"
+        );
 
         for (String className: beans) {
             try {
