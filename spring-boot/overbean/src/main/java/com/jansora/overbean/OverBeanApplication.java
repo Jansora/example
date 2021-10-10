@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OverbeanApplication {
+public class OverBeanApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OverbeanApplication.class, args);
+        SpringApplication.run(OverBeanApplication.class, args);
     }
 
 }
