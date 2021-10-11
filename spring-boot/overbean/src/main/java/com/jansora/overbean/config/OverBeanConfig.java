@@ -21,19 +21,22 @@ public class OverBeanConfig implements BeanFactoryPostProcessor {
 //    @Autowired
 //    AppProperties appProperties;
 
+    private static final List<String> classNames = Arrays.asList(
+            "com.jansora.overbean.service.impl.custom.Korean",
+            "com.jansora.overbean.service.impl.product.Asian",
+            "com.jansora.overbean.service.impl.product.European"
+    );
 
+    /**
+     * 排除掉 bean 元信息
+     * @param factory bean factory
+     */
     public void doExcludeBeans(DefaultListableBeanFactory factory) {
         if (ObjectUtils.isEmpty(factory)) {
             return;
         }
 
-        List<String> beans = Arrays.asList(
-                "com.jansora.overbean.service.impl.custom.Korean",
-                "com.jansora.overbean.service.impl.product.Asian",
-                "com.jansora.overbean.service.impl.product.European", "a"
-        );
-
-        for (String className: beans) {
+        for (String className: classNames) {
             try {
                 Class<?> clazz = Class.forName(className);
                 String[] beanNamesForClazz = factory.getBeanNamesForType(clazz);
@@ -44,7 +47,7 @@ public class OverBeanConfig implements BeanFactoryPostProcessor {
                 }
             }
             catch (ClassNotFoundException e) {
-                System.out.println(e);
+                System.out.println("can't find class of " + className);
             }
             catch (NoSuchBeanDefinitionException f) {
                 System.out.println("can't find bean of " + className);
