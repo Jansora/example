@@ -12,11 +12,11 @@ import org.springframework.context.ApplicationContextAware;
 @SpringBootApplication
 public class OverBeanApplication implements ApplicationContextAware {
 
-	public static ApplicationContext context;
+	private static ApplicationContext context;
 
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-				context = applicationContext;
+		context = applicationContext;
 	}
 
 	@Autowired
@@ -29,8 +29,9 @@ public class OverBeanApplication implements ApplicationContextAware {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OverBeanApplication.class, args);
-//		System.out.println(asianService.sayHello());
-//		System.out.println(europeanService.sayHello());
+
+		context.getBean(AsianService.class).sayHello();
+		context.getBean(EuropeanService.class).sayHello();
 	}
 
 }
